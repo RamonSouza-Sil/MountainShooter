@@ -4,6 +4,8 @@ from abc import ABC, abstractmethod
 
 import pygame.image
 
+from Code.Const import ENTITY_HEALTH
+
 
 class Entity(ABC):
     def __init__(self, name: str, position: tuple):
@@ -11,6 +13,7 @@ class Entity(ABC):
         self.surf = pygame.image.load('./Assets/' + name + '.png').convert_alpha()  # criar imagem padrão
         self.rect = self.surf.get_rect(left=position[0], top=position[1])
         self.speed = 0
+        self.health = ENTITY_HEALTH[self.name]
 
     @abstractmethod # o '@' se chama decorator
     def move(self, ):
