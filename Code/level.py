@@ -7,7 +7,7 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from Code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from Code.Const import C_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, C_GREEN, C_CYAN
 from Code.enemy import Enemy
 from Code.entity import Entity
 from Code.entityFactory import EntityFactory
@@ -40,10 +40,15 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
-                if isinstance(ent, (Player, Enemy)): # os tiros vem do player ou inimigo
+                if isinstance(ent, (Player, Enemy)):  # os tiros vem do player ou inimigo
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if ent.name == 'Player1':
+                    self.level_text(14, f'Player 1 - Health: {ent.health} || Score: {ent.score}', C_GREEN, (10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(14, f'Player 2 - Health: {ent.health} || Score: {ent.score}', C_CYAN, (10, 40))
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -52,7 +57,7 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
 
-            # printando texto
+            # printando texto LEVEL e TEMPO de jogo, FPS e ENTIDADE
             self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', C_WHITE, (10, 5))
             self.level_text(14, f'fps: {clock.get_fps():.0f}', C_WHITE, (10, WIN_HEIGHT - 35))
             self.level_text(14, f'entidades: {len(self.entity_list)}', C_WHITE, (10, WIN_HEIGHT - 20))
