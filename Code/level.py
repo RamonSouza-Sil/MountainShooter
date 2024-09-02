@@ -39,6 +39,7 @@ class Level:
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)  # 100ms
 
+
     def run(self, player_score: list[int]):
         pygame.mixer_music.load(f'./Assets/{self.name}.mp3')
         pygame.mixer_music.play(-1)
@@ -46,13 +47,15 @@ class Level:
         clock = pygame.time.Clock()
 
         if self.name == 'Level3':  # Checa se está na fase 3
-            self.timeout = TIMEOUT_LEVEL3
+            self.timeout = TIMEOUT_LEVEL3 # Muda o tempo da fase 3
+
 
         while True:
             clock.tick(60)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+
 
                 if isinstance(ent, (Player, Enemy)):  # os tiros vem do player ou inimigo
                     shoot = ent.shoot()
@@ -76,6 +79,9 @@ class Level:
                 if self.name == 'Level3':
                     if event.type == EVENT_ENEMY:  # spawn inimigos
                         self.entity_list.append(EntityFactory.get_entity('Enemy3'))
+
+
+
 
 
 
