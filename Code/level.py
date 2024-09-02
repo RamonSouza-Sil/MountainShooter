@@ -56,7 +56,6 @@ class Level:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
 
-
                 if isinstance(ent, (Player, Enemy)):  # os tiros vem do player ou inimigo
                     shoot = ent.shoot()
                     if shoot is not None:
