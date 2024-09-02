@@ -59,7 +59,7 @@ ENTITY_HEALTH = {
     'Level3Bg2' : 999,
     'Level3Bg3' : 999,
     'Level3Bg4' : 999,
-    'Player1': 5000,
+    'Player1': 120,
     'Player1Shot': 1,
     'Player2': 50,
     'Player2Shot': 1,
