@@ -24,9 +24,11 @@ class Score:
         while True:  # mostrar janela
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(48, 'YOU WIN!!', C_YELLOW, SCORE_POS['Title'])
+            text = 'Player 1, enter your nickname (4 Character).'
+            score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
-                text = 'Player 1, enter your nickname (4 Character).'
+
             if game_mode == MENU_OPTION[1]:
                 score = (player_score[0] + player_score[1]) / 2
                 text = 'Plase, enter your team nickname (4 Character).'

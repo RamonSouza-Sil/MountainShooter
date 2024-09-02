@@ -19,11 +19,12 @@ class Menu:
         menu_option = 0
         pygame.mixer_music.load('./Assets/Menu.mp3')
         pygame.mixer_music.play(-1)
+        pygame.mixer_music.set_volume(0.3)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(50, 'Mountain', C_ORANGE, ((WIN_WIDTH / 2), 70))
             self.menu_text(50, 'Shooter', C_ORANGE, ((WIN_WIDTH / 2), 120))
-            self.menu_text(15, 'Ramon Souza da Silva, RU', C_WHITE, (110, 10))
+            self.menu_text(15, 'Ramon Souza da Silva, RU: 4770359', C_WHITE, (110, 10))
 
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
