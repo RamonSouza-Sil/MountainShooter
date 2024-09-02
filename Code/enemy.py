@@ -11,7 +11,7 @@ class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
-        self.vertical_speed = 2
+        self.vertical_speed = 1.5
         self.direction = 1  # 1 sobe | -1 desce
 
     def move(self):
@@ -20,14 +20,12 @@ class Enemy(Entity):
         if self.name == 'Enemy3':
             self.rect.x -= self.speed
             self.rect.y += self.vertical_speed * self.direction
-
             if self.rect.top <= 0:
                 self.direction = 1
+                self.vertical_speed = 4
             elif self.rect.bottom >= pygame.display.get_surface().get_height():
+                self.vertical_speed = 2
                 self.direction = -1
-
-
-
 
 
     def shoot(self):
